@@ -1,11 +1,9 @@
 from app.model.marty import Marty
 
 class DirectionalArrowsController():
-		marty2 = Marty()
 		marty = Marty()
 
 		def __init__(self):
-				print("Martys are the same: ", self.marty.rand == self.marty2.rand)
 				pass
 
 		def on_b_forw_click(self):
