@@ -1,11 +1,14 @@
 from PyQt6.QtWidgets import QWidget
 from PyQt6 import uic
+from app.controller.directional_arrows_controller import DirectionalArrowsController
 
-class DirectionalArrows(QWidget):
+class DirectionalArrowsView(QWidget):
+    directional_arrows_controller = DirectionalArrowsController()
+
     def __init__(self, parent=None):
-        super(DirectionalArrows, self).__init__(parent)
+        super(DirectionalArrowsView, self).__init__(parent)
         
-        uic.loadUi("app/view/directional_arrows.ui", self)
+        uic.loadUi("app/view/directional_arrows_view.ui", self)
 
         
         # Connect signals to slots
@@ -19,19 +22,19 @@ class DirectionalArrows(QWidget):
         
 
     def on_b_forw_click(self):
-        print("Button 'forward' clicked!")
+        self.directional_arrows_controller.on_b_forw_click()
 
     def on_b_back_click(self):
-        print("Button 'backward' clicked!")
+        self.directional_arrows_controller.on_b_back_click()
 
     def on_b_left_click(self):
-        print("Button 'left' clicked!")
+        self.directional_arrows_controller.on_b_left_click()
 
     def on_b_right_click(self):
-        print("Button 'right' clicked!")
+        self.directional_arrows_controller.on_b_right_click()
 
     def on_b_forw_left_click(self):
-        print("Button 'forward-left' clicked!")
+        self.directional_arrows_controller.on_b_forw_left_click()
 
     def on_b_forw_right_click(self):
-        print("Button 'forward-right' clicked!")
+        self.directional_arrows_controller.on_b_forw_right_click()

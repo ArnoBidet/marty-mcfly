@@ -1,11 +1,10 @@
 import sys
 from PyQt6 import QtWidgets, uic
-from controller.directional_arrows import DirectionalArrows
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-        uic.loadUi("app/view/mainwindow.ui", self)
+        uic.loadUi("app/view/mainwindow_view.ui", self)
 
         
 

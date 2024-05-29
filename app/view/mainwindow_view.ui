@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="DirectionalArrows" name="directional_arrows" native="true">
+   <widget class="DirectionalArrowsView" name="directional_arrows_view" native="true">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -39,9 +39,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DirectionalArrows</class>
+   <class>DirectionalArrowsView</class>
    <extends>QWidget</extends>
-   <header>controller.directional_arrows</header>
+   <header>view.directional_arrows_view</header>
   </customwidget>
  </customwidgets>
  <resources/>
