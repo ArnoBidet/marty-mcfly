@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <widget class="QMainWindow" name="MainWindowView">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>600</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="DirectionalArrowsView" name="directional_arrows_view" native="true">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>160</y>
-      <width>92</width>
-      <height>24</height>
+      <x>50</x>
+      <y>50</y>
+      <width>411</width>
+      <height>301</height>
      </rect>
-    </property>
-    <property name="text">
-     <string>test</string>
     </property>
    </widget>
   </widget>
@@ -33,13 +30,20 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>600</width>
      <height>23</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DirectionalArrowsView</class>
+   <extends>QWidget</extends>
+   <header>view.directional_arrows_view</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
