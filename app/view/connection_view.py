@@ -1,7 +1,7 @@
 from PyQt6 import QtWidgets, uic
-from app.controller.connection_controller import ConnectionController
-from app.view.action_view import ActionView
-from app.view.directional_arrows_view import DirectionalArrowsView
+from controller.connection_controller import ConnectionController
+from view.action_view import ActionView
+from view.directional_arrows_view import DirectionalArrowsView
 
 
 class ConnectionView(QtWidgets.QDialog ):

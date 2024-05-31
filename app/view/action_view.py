@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QWidget
 from PyQt6 import uic
 
-from app.controller.action_controller import ActionController
+from controller.action_controller import ActionController
 
 
 class ActionView(QWidget):
