@@ -1,6 +1,8 @@
 from PyQt6.QtWidgets import QWidget
 from PyQt6 import uic
-from controller.action_controller import ActionController
+
+from app.controller.action_controller import ActionController
+
 
 class ActionView(QWidget):
     directional_arrows_controller = ActionController()
