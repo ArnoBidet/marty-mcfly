@@ -24,56 +24,56 @@
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="b_stand_straight">
       <property name="text">
        <string>Stand straight</string>
       </property>
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="b_dance">
       <property name="text">
        <string>Dance</string>
       </property>
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="b_celebrate">
       <property name="text">
        <string>Celebrate</string>
       </property>
      </widget>
     </item>
     <item row="0" column="2">
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="b_wave_left">
       <property name="text">
        <string>Wave left</string>
       </property>
      </widget>
     </item>
     <item row="0" column="3">
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="b_wave_right">
       <property name="text">
        <string>Wave right</string>
       </property>
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="b_hello">
       <property name="text">
        <string>Hello</string>
       </property>
      </widget>
     </item>
     <item row="1" column="2">
-     <widget class="QPushButton" name="pushButton_7">
+     <widget class="QPushButton" name="b_shoot_right">
       <property name="text">
        <string>Shoot right</string>
       </property>
      </widget>
     </item>
     <item row="1" column="3">
-     <widget class="QPushButton" name="pushButton_8">
+     <widget class="QPushButton" name="b_shoot_left">
       <property name="text">
        <string>Shoot left</string>
       </property>
