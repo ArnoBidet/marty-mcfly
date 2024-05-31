@@ -33,3 +33,28 @@ class Marty():
 
 		def go_forward_right(self):
 				print("Button 'forward-right' clicked!")
+
+
+		def stand_straight(self):
+			print("stand_straight")
+
+		def dance(self):
+			print("dance")
+
+		def celebrate(self):
+			print("celebrate")
+
+		def wave_left(self):
+			print("wave_left")
+
+		def wave_right(self):
+			print("wave_right")
+
+		def hello(self):
+			print("hello")
+
+		def shoot_right(self):
+			print("shoot_right")
+
+		def shoot_left(self):
+			print("shoot_left")

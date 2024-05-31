@@ -1,4 +1,4 @@
-from app.model.marty import Marty
+from model.marty import Marty
 
 class DirectionalArrowsController():
 		marty = Marty()
