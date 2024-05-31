@@ -1,15 +1,13 @@
 from app.model.marty import Marty
 
 class ConnectionController():
-		marty = Marty()
+	def __init__(self):
+		self.marty = Marty()
 
-		def __init__(self):
-				pass
+	def connect(self,ip):
+		success = self.marty.connect_marty(ip)
+		return success
 
-		def ok(self):
-			#créé un objet marty
-            pass
-
-		def cancel(self):
-			##ferme la fenetre / reset le champs ip
-            pass
+	def cancel(self):
+		##ferme la fenetre / reset le champs ip
+		pass
