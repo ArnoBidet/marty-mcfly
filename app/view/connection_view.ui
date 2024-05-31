@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>Dialog</class>
- <widget class="Qwidget" name="ConnectionWidget">
+ <widget class="QWidget" name="Connection">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -45,7 +45,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>255.255.255.255</string>
+    <string>192.168.0.0</string>
    </property>
    <property name="maxLength">
     <number>15</number>
