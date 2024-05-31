@@ -1,5 +1,6 @@
 from PyQt6.QtWidgets import QWidget
 from PyQt6 import uic
+from PyQt6.QtCore import Qt
 from controller.directional_arrows_controller import DirectionalArrowsController
 
 class DirectionalArrowsView(QWidget):
@@ -38,3 +39,17 @@ class DirectionalArrowsView(QWidget):
 
     def on_b_forw_right_click(self):
         self.directional_arrows_controller.on_b_forw_right_click()
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key.Key_Up:
+            self.directional_arrows_controller.on_b_forw_click()
+        elif event.key() == Qt.Key.Key_Down:
+            self.directional_arrows_controller.on_b_back_click()
+        elif event.key() == Qt.Key.Key_Left:
+            self.directional_arrows_controller.on_b_left_click()
+        elif event.key() == Qt.Key.Key_Right:
+            self.directional_arrows_controller.on_b_right_click()
+        elif event.key() == Qt.Key.Key_Up + Qt.Key.Key_Left:
+            self.directional_arrows_controller.on_b_forw_left_click()
+        elif event.key() == Qt.Key.Key_Up + Qt.Key.Key_Right:
+            self.directional_arrows_controller.on_b_forw_right_click()
