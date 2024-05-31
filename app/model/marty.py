@@ -2,8 +2,6 @@ from asyncio import wait
 from turtle import delay
 import numpy as np
 from martypy import Marty as realMarty
-from pynput import keyboard
-
 class Marty():
 		def __new__(cls):
 			if not hasattr(cls, 'instance'):
