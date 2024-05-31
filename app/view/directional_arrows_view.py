@@ -8,7 +8,7 @@ class DirectionalArrowsView(QWidget):
     def __init__(self, parent=None):
         super(DirectionalArrowsView, self).__init__(parent)
         
-        uic.loadUi("app/view/directional_arrows_view.ui", self)
+        uic.loadUi("view/directional_arrows_view.ui", self)
 
         
         # Connect signals to slots

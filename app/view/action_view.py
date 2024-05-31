@@ -8,7 +8,7 @@ class ActionView(QWidget):
     def __init__(self, parent=None):
         super(ActionView, self).__init__(parent)
         
-        uic.loadUi("app/view/action_view.ui", self)
+        uic.loadUi("view/action_view.ui", self)
 
         
         # Connect signals to slots
