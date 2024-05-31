@@ -34,7 +34,6 @@ class Marty():
 		def go_forward_right(self):
 			print("Button 'forward-right' clicked!")
 
-
 		def stand_straight(self):
 			print("stand_straight")
 
