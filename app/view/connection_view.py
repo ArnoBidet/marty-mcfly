@@ -1,7 +1,7 @@
 from PyQt6 import QtWidgets, uic
-from controller.connection_controller import ConnectionController
-from view.action_view import ActionView
-from view.directional_arrows_view import DirectionalArrowsView
+from app.controller.connection_controller import ConnectionController
+from app.view.action_view import ActionView
+from app.view.directional_arrows_view import DirectionalArrowsView
 
 
 class ConnectionView(QtWidgets.QDialog ):
@@ -31,7 +31,7 @@ class ConnectionView(QtWidgets.QDialog ):
             connectionView = ConnectionView(self)
             connectionView.textConnexion.setText("Erreur lors de la connexion")
             self.mainWindow.resize(connectionView.width(), connectionView.height())
-            self.mainWindow.hLayout.addWidget(connectionView)
+            self.mainWindow.vLayout.addWidget(connectionView)
 
 
     def on_close(self):

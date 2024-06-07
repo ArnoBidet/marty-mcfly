@@ -1,4 +1,4 @@
-from model.marty import Marty
+from app.model.marty import Marty
 
 class ConnectionController():
 	def __init__(self):
