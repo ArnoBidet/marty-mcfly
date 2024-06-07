@@ -35,6 +35,7 @@ class DirectionalArrowsView(QWidget):
         self.b_forw.setIcon(QIcon("../public/forw-arrow.png"))
         self.b_forw.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         gridLayoutArrow.addWidget(self.b_forw, 0, 1)
+        self.b_forw.setFocus()
 
         self.b_forw_right = QPushButton("", self)
         self.b_forw_right.setIcon(QIcon("../public/up-right-arrow.png"))
@@ -60,19 +61,13 @@ class DirectionalArrowsView(QWidget):
         self.b_forw_left.clicked.connect(self.on_b_forw_left_click)
         self.b_forw_right.clicked.connect(self.on_b_forw_right_click)
 
-        self.b_forw.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
-        self.b_back.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
-        self.b_left.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
-        self.b_right.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
-        self.b_forw_left.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
-        self.b_forw_right.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
-
         self.b_forw.installEventFilter(self)
         self.b_back.installEventFilter(self)
         self.b_left.installEventFilter(self)
         self.b_right.installEventFilter(self)
         self.b_forw_left.installEventFilter(self)
         self.b_forw_right.installEventFilter(self)
+
         # Create the grid layout
         gridLayoutWidget = QWidget(self)
         gridLayoutWidget.setGeometry(0, 30, 391, 231)
@@ -116,7 +111,9 @@ class DirectionalArrowsView(QWidget):
         self.hLayout.addWidget(gridLayoutWidgetArrow)
         self.hLayout.addWidget(gridLayoutWidget)
 
-
+    def showEvent(self, event):
+        super().showEvent(event)
+        self.b_forw.setFocus()
 
     def on_b_forw_click(self):
         self.directional_arrows_controller.on_b_forw_click()
@@ -147,6 +144,8 @@ class DirectionalArrowsView(QWidget):
                 self.on_b_left_click()
             elif key == Qt.Key.Key_Right or key == Qt.Key.Key_D:
                 self.on_b_right_click()
+            elif key == Qt.Key.Key_Space:
+                self.directional_arrows_controller.on_b_stand_straight()
             elif key == Qt.Key.Key_Up + Qt.Key.Key_Left or key == Qt.Key.Key_A:
                 self.on_b_forw_left_click()
             elif key == Qt.Key.Key_Up + Qt.Key.Key_Right or key == Qt.Key.Key_E:
