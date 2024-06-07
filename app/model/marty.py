@@ -5,67 +5,72 @@ from martypy import Marty as realMarty
 from pynput import keyboard
 
 class Marty():
-		def __new__(cls):
-			if not hasattr(cls, 'instance'):
-				cls.instance = super(Marty, cls).__new__(cls)
-			return cls.instance
-		
-		def __init__(self):
+	_instance = None
+	marty = None
+	marty_ip = None
+	marty_connected = False
+	marty_status = None
+	def __new__(cls, *args, **kwargs):
+		if not cls._instance:
+			cls._instance = super(Marty, cls).__new__(cls, *args, **kwargs)
+		return cls._instance
+
+
+	def go_forw(self):
+		if(self.marty_connected):
+			self.marty.walk(1,'auto',0,40,1700);
+		else:
+			print("No marty connected")
+
+	def go_back(self):
+		self.marty.walk(1,'auto',0,-40, 1700);
+
+	def turn_left(self):
+		self.marty.sidestep("left")
+
+	def turn_right(self):
+		self.marty.sidestep("right")
+
+	def go_forw_left(self):
+		for i in range(4):
+			self.marty.walk(1, 'auto', 16, 1, 1000)
+
+	def go_forward_right(self):
+		for i in range(4):
+			self.marty.walk(1, 'auto', -16, 1, 1000)
+
+	def stand_straight(self):
+		#self.marty.walk(1, 'auto', 0, 8, 1700)
+		self.marty.stand_straight(750)
+
+	def dance(self):
+		self.marty.dance()
+
+	def celebrate(self):
+		self.marty.celebrate()
+
+	def wave_left(self):
+		self.marty.wave("left")
+
+	def wave_right(self):
+		self.marty.wave("right")
+
+	def hello(self):
+		self.marty.hello()
+
+	def shoot_right(self):
+		self.marty.kick("right")
+
+	def shoot_left(self):
+		self.marty.kick("left")
+
+	def connect_marty(self,ip):
+		try:
+			self.marty = realMarty("wifi", ip, blocking=False)
+			self.marty_connected = True
+			self.marty.get_ready()
+			return "success"
+		except:
 			self.marty = None
-			self.marty_ip = None
 			self.marty_connected = False
-			self.marty_status = None
-
-		def go_forw(self):
-			print("Button 'forward' clicked!")
-
-		def go_back(self):
-			print("Button 'backward' clicked!")
-
-		def turn_left(self):
-			print("Button 'left' clicked!")
-
-		def turn_right(self):
-			print("Button 'right' clicked!")
-
-		def go_forw_left(self):
-			print("Button 'forward-left' clicked!")
-
-		def go_forward_right(self):
-			print("Button 'forward-right' clicked!")
-
-		def stand_straight(self):
-			print("stand_straight")
-
-		def dance(self):
-			print("dance")
-
-		def celebrate(self):
-			print("celebrate")
-
-		def wave_left(self):
-			print("wave_left")
-
-		def wave_right(self):
-			print("wave_right")
-
-		def hello(self):
-			print("hello")
-
-		def shoot_right(self):
-			print("shoot_right")
-
-		def shoot_left(self):
-			print("shoot_left")
-
-		def connect_marty(self,ip):
-			try:
-				self.marty = realMarty("wifi", ip, blocking=False)
-				self.marty_connected = True
-				self.marty.dance()
-				self.marty.close()
-				return "success"
-			except:
-				self.marty = None
-				self.marty_connected = False
-				return "failed"
+			return "failed"
