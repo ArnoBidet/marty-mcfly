@@ -50,10 +50,10 @@ class ConnectionView(QtWidgets.QDialog ):
             self.mainWindow.resize(1000, 800)
             self.mainWindow.hLayout.addWidget(action_view)
 
-        if(success == "failed") :
-            connectionView = ConnectionView(self, self.mainWindow)
-            connectionView.textConnexion.setText("Erreur lors de la connexion")
-            self.mainWindow.resize(connectionView.width(), connectionView.height())
+        if (success == "failed"):
+            connectionView = ConnectionView(self.mainWindow)
+            connectionView.textConnexion.setText("Erreur lors de la connexion vers : " + self.IPInput.text())
+            connectionView.IPInput.setText(self.IPInput.text())
             self.mainWindow.hLayout.addWidget(connectionView)
 
 
