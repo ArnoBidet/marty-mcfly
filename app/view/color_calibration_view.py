@@ -2,15 +2,14 @@ from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QHBoxLayout, QWidget, QGridLayout, QPushButton, QSizePolicy
 from PyQt6.QtGui import QIcon
 from app.controller.color_calibration_controller import ColorCalibrationController
-from app.view.action_view import ActionView
+
 
 
 class ColorCalibrationView(QtWidgets.QDialog):
-    connection_controller = ColorCalibrationController()
+    color_calibration_controller = ColorCalibrationController()
 
-    def __init__(self, mainWindow, parent=None):
+    def __init__(self, parent=None):
         super(ColorCalibrationView, self).__init__(parent)
-        self.mainWindow = mainWindow
         self.setWindowTitle("Directional Arrows")
         self.setGeometry(0, 0, 400, 300)
 
@@ -56,22 +55,20 @@ class ColorCalibrationView(QtWidgets.QDialog):
         self.b_yellow.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         grid_layout_caliber.addWidget(self.b_yellow, 1, 2)
 
-        self.b_black.connect(self.on_b_color_click("black"))
-        self.b_dark_blue.connect(self.on_b_color_click("dark_blue"))
-        self.b_green.connect(self.on_b_color_click("green"))
-        self.b_light_blue.connect(self.on_b_color_click("light_blue"))
-        self.b_pink.connect(self.on_b_color_click("pink"))
-        self.b_red.connect(self.on_b_color_click("red"))
-        self.b_yellow.connect(self.on_b_color_click("yellow"))
+        self.b_black.clicked.connect(lambda _: self.on_b_color_click("black"))
+        self.b_dark_blue.clicked.connect(lambda _: self.on_b_color_click("dark_blue"))
+        self.b_green.clicked.connect(lambda _: self.on_b_color_click("green"))
+        self.b_light_blue.clicked.connect(lambda _: self.on_b_color_click("light_blue"))
+        self.b_pink.clicked.connect(lambda _: self.on_b_color_click("pink"))
+        self.b_red.clicked.connect(lambda _: self.on_b_color_click("red"))
+        self.b_yellow.clicked.connect(lambda _: self.on_b_color_click("yellow"))
 
 
-    def on_b_color_click(self):
-
+    def on_b_color_click(self, color):
+        self.color_calibration_controller.calibrate(color)
 
     def on_ok(self):
-        action_view = ActionView(self.mainWindow)
-        self.mainWindow.resize(1000, 800)
-        self.mainWindow.hLayout.addWidget(action_view)
+        self.close()
 
     def on_close(self):
         self.close()

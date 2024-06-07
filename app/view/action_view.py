@@ -2,6 +2,7 @@ from PyQt6.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy,QHBox
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon
 from app.controller.action_controller import ActionController
+from app.view.color_calibration_view import ColorCalibrationView
 
 class ActionView(QWidget):
     action_controller = ActionController()
@@ -98,6 +99,9 @@ class ActionView(QWidget):
         self.b_shoot_left = QPushButton("Shoot left", self)
         gridLayout.addWidget(self.b_shoot_left, 1, 3)
 
+        self.b_caliber = QPushButton("Caliber", self)
+        gridLayout.addWidget(self.b_caliber, 2, 2)
+
         # Connect signals to slots
         self.b_stand_straight.clicked.connect(self.on_b_stand_straight)
         self.b_dance.clicked.connect(self.on_b_dance)
@@ -107,6 +111,7 @@ class ActionView(QWidget):
         self.b_hello.clicked.connect(self.on_b_hello)
         self.b_shoot_right.clicked.connect(self.on_b_shoot_right)
         self.b_shoot_left.clicked.connect(self.on_b_shoot_left)
+        self.b_caliber.clicked.connect(self.on_b_caliber)
 
         self.hLayout.addWidget(gridLayoutWidgetArrow)
         self.hLayout.addWidget(gridLayoutWidget)
@@ -184,4 +189,11 @@ class ActionView(QWidget):
 
 
     def on_b_shoot_left(self):
-        self.directional_arrows_controller.on_b_shoot_left()
+        self.action_controller.on_b_shoot_left()
+
+    def on_b_caliber(self):
+        caliber_window = ColorCalibrationView()
+        caliber_window.setModal(True)
+        caliber_window.show()
+
+
