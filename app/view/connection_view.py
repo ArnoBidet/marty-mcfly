@@ -1,7 +1,6 @@
 from PyQt6 import QtWidgets, QtCore
 from PyQt6.QtWidgets import  QVBoxLayout, QLabel, QLineEdit, QDialogButtonBox
 from app.controller.connection_controller import ConnectionController
-from app.view.action_view import ActionView
 from app.view.directional_arrows_view import DirectionalArrowsView
 
 
@@ -47,18 +46,15 @@ class ConnectionView(QtWidgets.QDialog ):
         success = self.connection_controller.connect(self.IPInput.text())
 
         if(success == "success"):
-            directional_arrows_view = DirectionalArrowsView()
-            actionView = ActionView()
-            self.mainWindow.resize(directional_arrows_view.width() + actionView.height() + 100, directional_arrows_view.height())
-
+            directional_arrows_view = DirectionalArrowsView(self.mainWindow)
+            self.mainWindow.resize(1000, 800)
             self.mainWindow.hLayout.addWidget(directional_arrows_view)
-            self.mainWindow.hLayout.addWidget(actionView)
 
         if(success == "failed") :
-            connectionView = ConnectionView(self)
+            connectionView = ConnectionView(self, self.mainWindow)
             connectionView.textConnexion.setText("Erreur lors de la connexion")
             self.mainWindow.resize(connectionView.width(), connectionView.height())
-            self.mainWindow.vLayout.addWidget(connectionView)
+            self.mainWindow.hLayout.addWidget(connectionView)
 
 
     def on_close(self):
