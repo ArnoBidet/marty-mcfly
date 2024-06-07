@@ -99,8 +99,8 @@ class ActionView(QWidget):
         self.b_shoot_left = QPushButton("Shoot left", self)
         gridLayout.addWidget(self.b_shoot_left, 1, 3)
 
-        self.b_caliber = QPushButton("Caliber", self)
-        gridLayout.addWidget(self.b_caliber, 2, 2)
+        self.b_calibrate = QPushButton("Calibrate", self)
+        gridLayout.addWidget(self.b_calibrate, 2, 2)
 
         # Connect signals to slots
         self.b_stand_straight.clicked.connect(self.on_b_stand_straight)
@@ -111,7 +111,7 @@ class ActionView(QWidget):
         self.b_hello.clicked.connect(self.on_b_hello)
         self.b_shoot_right.clicked.connect(self.on_b_shoot_right)
         self.b_shoot_left.clicked.connect(self.on_b_shoot_left)
-        self.b_caliber.clicked.connect(self.on_b_caliber)
+        self.b_calibrate.clicked.connect(self.on_b_calibrate)
 
         self.hLayout.addWidget(gridLayoutWidgetArrow)
         self.hLayout.addWidget(gridLayoutWidget)
@@ -191,9 +191,9 @@ class ActionView(QWidget):
     def on_b_shoot_left(self):
         self.action_controller.on_b_shoot_left()
 
-    def on_b_caliber(self):
-        caliber_window = ColorCalibrationView()
-        caliber_window.setModal(True)
-        caliber_window.show()
+    def on_b_calibrate(self):
+        calibrate_window = ColorCalibrationView()
+        calibrate_window.setModal(True)
+        calibrate_window.show()
 
 
