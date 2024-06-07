@@ -8,6 +8,7 @@ class Marty():
 	marty_ip = None
 	marty_connected = False
 	marty_status = None
+	colors = {"black":0, "red":0, "green":0, "dark_blue":0, "light_blue":0, "yellow":0, "pink":0}
 	def __new__(cls, *args, **kwargs):
 		if not cls._instance:
 			cls._instance = super(Marty, cls).__new__(cls, *args, **kwargs)
@@ -40,6 +41,7 @@ class Marty():
 	def stand_straight(self):
 		#self.marty.walk(1, 'auto', 0, 8, 1700)
 		self.marty.stand_straight(750)
+		print(self.colors)
 
 	def dance(self):
 		self.marty.dance()
@@ -79,3 +81,12 @@ class Marty():
 			self.marty = None
 			self.marty_connected = False
 			return "failed"
+
+	def color_calibration(self, color:str):
+		mean = 0
+		for i in range(15):
+			mean = mean + int(self.marty.get_color_sensor_hex('left'), 16)
+		self.colors[color] = mean / 15
+
+
+

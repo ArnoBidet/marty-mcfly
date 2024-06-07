@@ -53,7 +53,7 @@ class ColorCalibrationView(QtWidgets.QDialog):
         self.b_yellow = QPushButton("", self)
         self.b_yellow.setIcon(QIcon("../public/yellow.png"))
         self.b_yellow.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        grid_layout_caliber.addWidget(self.b_yellow, 1, 2)
+        grid_layout_caliber.addWidget(self.b_yellow, 2, 1)
 
         self.b_black.clicked.connect(lambda _: self.on_b_color_click("black"))
         self.b_dark_blue.clicked.connect(lambda _: self.on_b_color_click("dark_blue"))
