@@ -150,13 +150,13 @@ class ActionView(QWidget):
             elif key == Qt.Key.Key_Right or key == Qt.Key.Key_D:
                 self.on_b_right_click()
             elif key == Qt.Key.Key_Space:
-                self.directional_arrows_controller.on_b_stand_straight()
+                self.action_controller.on_b_stand_straight()
             elif key == Qt.Key.Key_Up + Qt.Key.Key_Left or key == Qt.Key.Key_A:
                 self.on_b_forw_left_click()
             elif key == Qt.Key.Key_Up + Qt.Key.Key_Right or key == Qt.Key.Key_E:
                 self.on_b_forw_right_click()
             elif key == Qt.Key.Key_Backspace:
-                self.directional_arrows_controller.hi()
+                self.action_controller.hi()
             return True
         return super().eventFilter(obj, event)
 

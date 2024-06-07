@@ -46,3 +46,6 @@ class ActionController:
 
     def on_b_forw_right_click(self):
         self.marty.go_forward_right()
+
+    def hi(self):
+        self.marty.hi()
