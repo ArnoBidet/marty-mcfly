@@ -1,7 +1,7 @@
 from PyQt6 import QtWidgets, QtCore
 from PyQt6.QtWidgets import  QVBoxLayout, QLabel, QLineEdit, QDialogButtonBox
 from app.controller.connection_controller import ConnectionController
-from app.view.directional_arrows_view import DirectionalArrowsView
+from app.view.action_view import ActionView
 
 
 class ConnectionView(QtWidgets.QDialog ):
@@ -46,9 +46,9 @@ class ConnectionView(QtWidgets.QDialog ):
         success = self.connection_controller.connect(self.IPInput.text())
 
         if(success == "success"):
-            directional_arrows_view = DirectionalArrowsView(self.mainWindow)
+            action_view = ActionView(self.mainWindow)
             self.mainWindow.resize(1000, 800)
-            self.mainWindow.hLayout.addWidget(directional_arrows_view)
+            self.mainWindow.hLayout.addWidget(action_view)
 
         if(success == "failed") :
             connectionView = ConnectionView(self, self.mainWindow)

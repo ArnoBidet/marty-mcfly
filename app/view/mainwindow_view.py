@@ -1,6 +1,5 @@
 from PyQt6 import QtWidgets, uic
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout
-from app.view.directional_arrows_view import DirectionalArrowsView
 from app.view.connection_view import ConnectionView
 
 class MainWindowView(QtWidgets.QMainWindow):

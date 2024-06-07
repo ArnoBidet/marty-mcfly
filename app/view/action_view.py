@@ -1,13 +1,13 @@
 from PyQt6.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy,QHBoxLayout
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon
-from app.controller.directional_arrows_controller import DirectionalArrowsController
+from app.controller.action_controller import ActionController
 
-class DirectionalArrowsView(QWidget):
-    directional_arrows_controller = DirectionalArrowsController()
+class ActionView(QWidget):
+    action_controller = ActionController()
 
     def __init__(self, mainWindow, parent=None):
-        super(DirectionalArrowsView, self).__init__(parent)
+        super(ActionView, self).__init__(parent)
         self.mainWindow = mainWindow
         self.setWindowTitle("Directional Arrows")
         self.setGeometry(0, 0, 400, 300)
@@ -106,68 +106,68 @@ class DirectionalArrowsView(QWidget):
 
 
     def on_b_forw_click(self):
-        self.directional_arrows_controller.on_b_forw_click()
+        self.action_controller.on_b_forw_click()
 
     def on_b_back_click(self):
-        self.directional_arrows_controller.on_b_back_click()
+        self.action_controller.on_b_back_click()
 
     def on_b_left_click(self):
-        self.directional_arrows_controller.on_b_left_click()
+        self.action_controller.on_b_left_click()
 
     def on_b_right_click(self):
-        self.directional_arrows_controller.on_b_right_click()
+        self.action_controller.on_b_right_click()
 
     def on_b_forw_left_click(self):
-        self.directional_arrows_controller.on_b_forw_left_click()
+        self.action_controller.on_b_forw_left_click()
 
     def on_b_forw_right_click(self):
-        self.directional_arrows_controller.on_b_forw_right_click()
+        self.action_controller.on_b_forw_right_click()
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key.Key_Up:
-            self.directional_arrows_controller.on_b_forw_click()
+            self.action_controller.on_b_forw_click()
         elif event.key() == Qt.Key.Key_Down:
-            self.directional_arrows_controller.on_b_back_click()
+            self.action_controller.on_b_back_click()
         elif event.key() == Qt.Key.Key_Left:
-            self.directional_arrows_controller.on_b_left_click()
+            self.action_controller.on_b_left_click()
         elif event.key() == Qt.Key.Key_Right:
-            self.directional_arrows_controller.on_b_right_click()
+            self.action_controller.on_b_right_click()
         elif event.key() == Qt.Key.Key_Up + Qt.Key.Key_Left:
-            self.directional_arrows_controller.on_b_forw_left_click()
+            self.action_controller.on_b_forw_left_click()
         elif event.key() == Qt.Key.Key_Up + Qt.Key.Key_Right:
-            self.directional_arrows_controller.on_b_forw_right_click()
+            self.action_controller.on_b_forw_right_click()
 
 
     def on_b_stand_straight(self):
-        self.directional_arrows_controller.on_b_stand_straight()
+        self.action_controller.on_b_stand_straight()
 
 
     def on_b_dance(self):
-        self.directional_arrows_controller.on_b_dance()
+        self.action_controller.on_b_dance()
 
 
     def on_b_celebrate(self):
-        self.directional_arrows_controller.on_b_celebrate()
+        self.action_controller.on_b_celebrate()
 
 
     def on_b_wave_left(self):
-        self.directional_arrows_controller.on_b_wave_left()
+        self.action_controller.on_b_wave_left()
 
 
     def on_b_wave_right(self):
-        self.directional_arrows_controller.on_b_wave_right()
+        self.action_controller.on_b_wave_right()
 
 
     def on_b_hello(self):
-        self.directional_arrows_controller.on_b_hello()
+        self.action_controller.on_b_hello()
 
 
     def on_b_shoot_right(self):
-        self.directional_arrows_controller.on_b_shoot_right()
+        self.action_controller.on_b_shoot_right()
 
 
     def on_b_shoot_left(self):
-        self.directional_arrows_controller.on_b_shoot_left()
+        self.action_controller.on_b_shoot_left()
 
     def keyPressEvent(self, event):
         self.keyPressEvent(event)
