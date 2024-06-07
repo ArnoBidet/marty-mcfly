@@ -1,13 +1,14 @@
 from PyQt6.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy,QHBoxLayout
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon
-from app.controller.directional_arrows_controller import DirectionalArrowsController
+from app.controller.action_controller import ActionController
+from app.view.color_calibration_view import ColorCalibrationView
 
-class DirectionalArrowsView(QWidget):
-    directional_arrows_controller = DirectionalArrowsController()
+class ActionView(QWidget):
+    action_controller = ActionController()
 
     def __init__(self, mainWindow, parent=None):
-        super(DirectionalArrowsView, self).__init__(parent)
+        super(ActionView, self).__init__(parent)
         self.mainWindow = mainWindow
         self.setWindowTitle("Directional Arrows")
         self.setGeometry(0, 0, 400, 300)
@@ -98,6 +99,9 @@ class DirectionalArrowsView(QWidget):
         self.b_shoot_left = QPushButton("Shoot left", self)
         gridLayout.addWidget(self.b_shoot_left, 1, 3)
 
+        self.b_caliber = QPushButton("Caliber", self)
+        gridLayout.addWidget(self.b_caliber, 2, 2)
+
         # Connect signals to slots
         self.b_stand_straight.clicked.connect(self.on_b_stand_straight)
         self.b_dance.clicked.connect(self.on_b_dance)
@@ -107,6 +111,7 @@ class DirectionalArrowsView(QWidget):
         self.b_hello.clicked.connect(self.on_b_hello)
         self.b_shoot_right.clicked.connect(self.on_b_shoot_right)
         self.b_shoot_left.clicked.connect(self.on_b_shoot_left)
+        self.b_caliber.clicked.connect(self.on_b_caliber)
 
         self.hLayout.addWidget(gridLayoutWidgetArrow)
         self.hLayout.addWidget(gridLayoutWidget)
@@ -116,22 +121,22 @@ class DirectionalArrowsView(QWidget):
         self.b_forw.setFocus()
 
     def on_b_forw_click(self):
-        self.directional_arrows_controller.on_b_forw_click()
+        self.action_controller.on_b_forw_click()
 
     def on_b_back_click(self):
-        self.directional_arrows_controller.on_b_back_click()
+        self.action_controller.on_b_back_click()
 
     def on_b_left_click(self):
-        self.directional_arrows_controller.on_b_left_click()
+        self.action_controller.on_b_left_click()
 
     def on_b_right_click(self):
-        self.directional_arrows_controller.on_b_right_click()
+        self.action_controller.on_b_right_click()
 
     def on_b_forw_left_click(self):
-        self.directional_arrows_controller.on_b_forw_left_click()
+        self.action_controller.on_b_forw_left_click()
 
     def on_b_forw_right_click(self):
-        self.directional_arrows_controller.on_b_forw_right_click()
+        self.action_controller.on_b_forw_right_click()
 
     def eventFilter(self, obj, event):
         if event.type() == 7:  # 6 corresponds au type d'événement KeyPress
@@ -156,32 +161,39 @@ class DirectionalArrowsView(QWidget):
         return super().eventFilter(obj, event)
 
     def on_b_stand_straight(self):
-        self.directional_arrows_controller.on_b_stand_straight()
+        self.action_controller.on_b_stand_straight()
 
 
     def on_b_dance(self):
-        self.directional_arrows_controller.on_b_dance()
+        self.action_controller.on_b_dance()
 
 
     def on_b_celebrate(self):
-        self.directional_arrows_controller.on_b_celebrate()
+        self.action_controller.on_b_celebrate()
 
 
     def on_b_wave_left(self):
-        self.directional_arrows_controller.on_b_wave_left()
+        self.action_controller.on_b_wave_left()
 
 
     def on_b_wave_right(self):
-        self.directional_arrows_controller.on_b_wave_right()
+        self.action_controller.on_b_wave_right()
 
 
     def on_b_hello(self):
-        self.directional_arrows_controller.on_b_hello()
+        self.action_controller.on_b_hello()
 
 
     def on_b_shoot_right(self):
-        self.directional_arrows_controller.on_b_shoot_right()
+        self.action_controller.on_b_shoot_right()
 
 
     def on_b_shoot_left(self):
-        self.directional_arrows_controller.on_b_shoot_left()
+        self.action_controller.on_b_shoot_left()
+
+    def on_b_caliber(self):
+        caliber_window = ColorCalibrationView()
+        caliber_window.setModal(True)
+        caliber_window.show()
+
+
