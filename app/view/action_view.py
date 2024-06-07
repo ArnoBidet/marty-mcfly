@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget
+from PyQt6.QtWidgets import QWidget, QGridLayout, QPushButton
 from PyQt6 import uic
 
 from app.controller.action_controller import ActionController
@@ -9,8 +9,39 @@ class ActionView(QWidget):
 
     def __init__(self, parent=None):
         super(ActionView, self).__init__(parent)
-        
-        uic.loadUi("view/action_view.ui", self)
+
+        self.setWindowTitle("Form")
+        self.setGeometry(0, 0, 400, 300)
+
+        # Create the grid layout
+        gridLayoutWidget = QWidget(self)
+        gridLayoutWidget.setGeometry(0, 30, 391, 231)
+        gridLayout = QGridLayout(gridLayoutWidget)
+
+        # Add buttons to the layout
+        self.b_stand_straight = QPushButton("Stand straight", self)
+        gridLayout.addWidget(self.b_stand_straight, 0, 0)
+
+        self.b_dance = QPushButton("Dance", self)
+        gridLayout.addWidget(self.b_dance, 0, 1)
+
+        self.b_celebrate = QPushButton("Celebrate", self)
+        gridLayout.addWidget(self.b_celebrate, 1, 0)
+
+        self.b_wave_left = QPushButton("Wave left", self)
+        gridLayout.addWidget(self.b_wave_left, 0, 2)
+
+        self.b_wave_right = QPushButton("Wave right", self)
+        gridLayout.addWidget(self.b_wave_right, 0, 3)
+
+        self.b_hello = QPushButton("Hello", self)
+        gridLayout.addWidget(self.b_hello, 1, 1)
+
+        self.b_shoot_right = QPushButton("Shoot right", self)
+        gridLayout.addWidget(self.b_shoot_right, 1, 2)
+
+        self.b_shoot_left = QPushButton("Shoot left", self)
+        gridLayout.addWidget(self.b_shoot_left, 1, 3)
 
         
         # Connect signals to slots
