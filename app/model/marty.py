@@ -62,6 +62,13 @@ class Marty():
 	def shoot_left(self):
 		self.marty.kick("left")
 
+	def hi(self):
+		self.marty.stand_straight(200, blocking=False)
+		self.marty.eyes(pose_or_angle=-20, move_time=100, blocking=False)
+		self.marty.arms(left_angle=0, right_angle=120, move_time=200)
+		self.marty.arms(left_angle=0, right_angle=0, move_time=200, blocking=False)
+		self.marty.eyes(pose_or_angle=0, move_time=100)
+
 	def connect_marty(self,ip):
 		try:
 			self.marty = realMarty("wifi", ip, blocking=False)
