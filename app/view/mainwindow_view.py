@@ -25,7 +25,3 @@ class MainWindowView(QtWidgets.QMainWindow):
         connection_view = ConnectionView(self)
         self.resize(connection_view.width(), connection_view.height())
         self.hLayout.addWidget(connection_view)
-        self.directional_arrows_view = DirectionalArrowsView()
-
-    def keyPressEvent(self, event):
-        self.directional_arrows_view.keyPressEvent(event)
