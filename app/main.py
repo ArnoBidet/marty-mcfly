@@ -1,5 +1,7 @@
 import sys
 from PyQt6 import QtWidgets
+
+from app.model.marty import Marty
 from view.mainwindow_view import MainWindowView
 
 if __name__ == '__main__':
@@ -7,3 +9,4 @@ if __name__ == '__main__':
     main_window_view = MainWindowView()
     main_window_view.show()
     sys.exit(app.exec())
+
