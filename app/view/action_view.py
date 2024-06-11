@@ -3,6 +3,7 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon
 from app.controller.action_controller import ActionController
 from app.view.color_calibration_view import ColorCalibrationView
+from app.view.labyrinthe_view import LabyrintheView
 
 class ActionView(QWidget):
     action_controller = ActionController()
@@ -190,10 +191,13 @@ class ActionView(QWidget):
 
     def on_b_shoot_left(self):
         self.action_controller.on_b_shoot_left()
-
+    
     def on_b_calibrate(self):
         calibrate_window = ColorCalibrationView()
         calibrate_window.setModal(True)
         calibrate_window.show()
 
-
+    def on_b_labyrinthe(self):
+        calibrate_window = LabyrintheView()
+        calibrate_window.setModal(True)
+        calibrate_window.show()

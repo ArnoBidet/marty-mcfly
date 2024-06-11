@@ -90,5 +90,7 @@ class Marty():
 			mean = mean + int(self.marties[0].get_color_sensor_hex('left'), 16)
 		self.colors[color] = mean / 15
 
+	def resolve(nb_marty):
+		pass
 
 
