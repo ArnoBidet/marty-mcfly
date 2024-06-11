@@ -5,4 +5,4 @@ class ColorCalibrationController():
         self.marty = Marty()
 
     def calibrate(self, color):
-        print(color)
+        self.marty.color_calibration(color)
