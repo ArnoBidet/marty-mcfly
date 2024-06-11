@@ -10,7 +10,7 @@ class ColorCalibrationView(QtWidgets.QDialog):
 
     def __init__(self, parent=None):
         super(ColorCalibrationView, self).__init__(parent)
-        self.setWindowTitle("Directional Arrows")
+        self.setWindowTitle("Calibration des couleurs")
         self.setGeometry(0, 0, 400, 300)
 
         self.hLayout = QHBoxLayout(self)

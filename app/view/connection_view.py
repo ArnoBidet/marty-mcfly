@@ -11,7 +11,7 @@ class ConnectionView(QtWidgets.QDialog ):
         super(ConnectionView, self).__init__(parent)
         self.mainWindow = mainWindow
         
-        self.setWindowTitle("Dialog")
+        self.setWindowTitle("Connexion à Marty")
         self.setGeometry(0, 0, 400, 317)
 
         # Create the main layout

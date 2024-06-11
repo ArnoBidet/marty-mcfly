@@ -10,7 +10,7 @@ class ActionView(QWidget):
     def __init__(self, mainWindow, parent=None):
         super(ActionView, self).__init__(parent)
         self.mainWindow = mainWindow
-        self.setWindowTitle("Directional Arrows")
+        self.setWindowTitle("Panneau de contrôle")
         self.setGeometry(0, 0, 400, 300)
 
         self.hLayout = QHBoxLayout(self)
