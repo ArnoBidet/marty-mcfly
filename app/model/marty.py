@@ -32,13 +32,16 @@ class Marty():
 	def go_forw_left(self):
 		for i in range(4):
 			self.marty.walk(1, 'auto', 16, 1, 1000)
+		self.stand_straight()
 
 	def go_forward_right(self):
 		for i in range(4):
 			self.marty.walk(1, 'auto', -16, 1, 1000)
+		self.stand_straight()
 
 	def stand_straight(self):
-		#self.marty.walk(1, 'auto', 0, 8, 1700)
+		if (self.marty.get_joint_position('left knee') or self.marty.get_joint_position('right knee')):
+			self.marty.walk(1, 'auto', 0, 8, 1700)
 		self.marty.stand_straight(750)
 
 	def dance(self):
