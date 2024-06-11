@@ -100,7 +100,11 @@ class ActionView(QWidget):
         gridLayout.addWidget(self.b_shoot_left, 1, 3)
 
         self.b_calibrate = QPushButton("Calibrate", self)
-        gridLayout.addWidget(self.b_calibrate, 2, 2)
+        gridLayout.addWidget(self.b_calibrate, 2, 1)
+
+
+        self.b_labyrinthe = QPushButton("Labyrinthe", self)
+        gridLayout.addWidget(self.b_labyrinthe, 2, 2)
 
         # Connect signals to slots
         self.b_stand_straight.clicked.connect(self.on_b_stand_straight)
@@ -112,6 +116,7 @@ class ActionView(QWidget):
         self.b_shoot_right.clicked.connect(self.on_b_shoot_right)
         self.b_shoot_left.clicked.connect(self.on_b_shoot_left)
         self.b_calibrate.clicked.connect(self.on_b_calibrate)
+        self.b_labyrinthe.clicked.connect(self.on_b_labyrinthe)
 
         self.hLayout.addWidget(gridLayoutWidgetArrow)
         self.hLayout.addWidget(gridLayoutWidget)
@@ -195,5 +200,6 @@ class ActionView(QWidget):
         calibrate_window = ColorCalibrationView()
         calibrate_window.setModal(True)
         calibrate_window.show()
-
+    def on_b_labyrinthe(self):
+        print("labyrinthe")
 
