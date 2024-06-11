@@ -1,4 +1,5 @@
 from asyncio import wait
+from time import sleep
 from turtle import delay
 import numpy as np
 from martypy import Marty as realMarty
@@ -8,6 +9,7 @@ class Marty():
 	marties_ip = [None,None]
 	marties_connected = [None,None]
 	marties_status = [None,None]
+	labyrinth = np.zeros((3,3))
 	colors = {"black":0, "red":0, "green":0, "dark_blue":0, "light_blue":0, "yellow":0, "pink":0}
 	def __new__(cls, *args, **kwargs):
 		if not cls._instance:
@@ -17,12 +19,12 @@ class Marty():
 
 	def go_forw(self, nbMarty=0):
 		if(self.marties_connected[nbMarty]):
-			self.marties[nbMarty].walk(1,'auto',0,40,1700)
+			self.marties[nbMarty].walk(1,'auto',0,35,1700)
 		else:
 			print("No marty connected")
 
 	def go_back(self, nbMarty=0):
-		self.marties[nbMarty].walk(1,'auto',0,-40, 1700)
+		self.marties[nbMarty].walk(1,'auto',0,-37, 1700)
 
 	def turn_left(self, nbMarty=0):
 		self.marties[nbMarty].sidestep("left")
@@ -90,5 +92,23 @@ class Marty():
 			mean = mean + int(self.marties[0].get_color_sensor_hex('left'), 16)
 		self.colors[color] = mean / 15
 
+	def read_labyrinth(self, nbMarty=0):
+		for i in range(3):
 
+			for j in range(3):
+				self.labyrinth[i][j] = int(self.marties[nbMarty].get_color_sensor_hex('left'), 16)
+				if i % 2 == 0:
+					for n in range(3):
+						self.go_forw()
+						sleep(1)
+				elif i % 2 == 1:
+					for n in range(3):
+						self.go_back()
+						sleep(1)
+			self.stand_straight()
+			print(i)
+			if i < 2:
+				self.marties[nbMarty].sidestep('left', 6)
+				sleep(1)
+		print(self.labyrinth)
 

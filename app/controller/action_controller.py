@@ -48,4 +48,4 @@ class ActionController:
         self.marty.go_forward_right()
 
     def hi(self):
-        self.marty.hi()
+        self.marty.read_labyrinth()
