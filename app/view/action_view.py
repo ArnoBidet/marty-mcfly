@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy,QHBoxLayout
+from PyQt6.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy,QVBoxLayout
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon
 from app.controller.action_controller import ActionController
@@ -12,46 +12,46 @@ class ActionView(QWidget):
         super(ActionView, self).__init__(parent)
         self.mainWindow = mainWindow
         self.setWindowTitle("Panneau de contrôle")
-        self.setGeometry(0, 0, 400, 300)
+        self.setGeometry(0, 0, 200, 100)
 
-        self.hLayout = QHBoxLayout(self)
+        self.vLayout = QVBoxLayout(self)
 
         # Create the grid layout
         gridLayoutWidgetArrow = QWidget(self)
-        gridLayoutWidgetArrow.setGeometry(30, 20, 325, 251)
+        gridLayoutWidgetArrow.setGeometry(0, 0, 200, 100)
         gridLayoutArrow = QGridLayout(gridLayoutWidgetArrow)
 
 
         # Add buttons to the layout with icons
         self.b_left = QPushButton("", self)
-        self.b_left.setIcon(QIcon("../public/left-arrow.png"))
-        self.b_left.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self.b_left.setFixedSize(100,100)
+        self.b_left.setStyleSheet("background-image:url('../public/left-arrow.png'); margin:0;")
         gridLayoutArrow.addWidget(self.b_left, 1, 0)
 
         self.b_right = QPushButton("", self)
-        self.b_right.setIcon(QIcon("../public/right-arrow.png"))
-        self.b_right.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self.b_right.setFixedSize(100,100)
+        self.b_right.setStyleSheet("background-image:url('../public/right-arrow.png'); margin:0;")
         gridLayoutArrow.addWidget(self.b_right, 1, 2)
 
         self.b_forw = QPushButton("", self)
-        self.b_forw.setIcon(QIcon("../public/forw-arrow.png"))
-        self.b_forw.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self.b_forw.setFixedSize(100,100)
+        self.b_forw.setStyleSheet("background-image:url('../public/forw-arrow.png'); margin:0;")
         gridLayoutArrow.addWidget(self.b_forw, 0, 1)
         self.b_forw.setFocus()
 
         self.b_forw_right = QPushButton("", self)
-        self.b_forw_right.setIcon(QIcon("../public/up-right-arrow.png"))
-        self.b_forw_right.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self.b_forw_right.setFixedSize(100,100)
+        self.b_forw_right.setStyleSheet("background-image:url('../public/up-right-arrow.png'); margin:0;")
         gridLayoutArrow.addWidget(self.b_forw_right, 0, 2)
 
         self.b_back = QPushButton("", self)
-        self.b_back.setIcon(QIcon("../public/back-arrow.png"))
-        self.b_back.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self.b_back.setFixedSize(100,100)
+        self.b_back.setStyleSheet("background-image:url('../public/back-arrow.png'); margin:0;")
         gridLayoutArrow.addWidget(self.b_back, 2, 1)
 
         self.b_forw_left = QPushButton("", self)
-        self.b_forw_left.setIcon(QIcon("../public/up-left-arrow.png"))
-        self.b_forw_left.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self.b_forw_left.setFixedSize(100,100)
+        self.b_forw_left.setStyleSheet("background-image:url('../public/up-left-arrow.png'); margin:0;")
         gridLayoutArrow.addWidget(self.b_forw_left, 0, 0)
 
         
@@ -72,40 +72,55 @@ class ActionView(QWidget):
 
         # Create the grid layout
         gridLayoutWidget = QWidget(self)
-        gridLayoutWidget.setGeometry(0, 30, 391, 231)
+        gridLayoutWidget.setGeometry(0, 0, 200, 100)
         gridLayout = QGridLayout(gridLayoutWidget)
 
         # Add buttons to the layout
-        self.b_stand_straight = QPushButton("Stand straight", self)
+        self.b_stand_straight = QPushButton("", self)
+        self.b_stand_straight.setFixedSize(100,100)
+        self.b_stand_straight.setStyleSheet("background-image:url('../public/stand_straight.png'); margin:0;")
         gridLayout.addWidget(self.b_stand_straight, 0, 0)
 
-        self.b_dance = QPushButton("Dance", self)
+        self.b_dance = QPushButton("", self)
+        self.b_dance.setFixedSize(100,100)
+        self.b_dance.setStyleSheet("background-image:url('../public/dance.png'); margin:0;")
         gridLayout.addWidget(self.b_dance, 0, 1)
 
-        self.b_celebrate = QPushButton("Celebrate", self)
+        self.b_celebrate = QPushButton("", self)
+        self.b_celebrate.setFixedSize(100,100)
+        self.b_celebrate.setStyleSheet("background-image:url('../public/celebrate.png'); margin:0;")
         gridLayout.addWidget(self.b_celebrate, 1, 0)
 
-        self.b_wave_left = QPushButton("Wave left", self)
-        gridLayout.addWidget(self.b_wave_left, 0, 2)
-
-        self.b_wave_right = QPushButton("Wave right", self)
-        gridLayout.addWidget(self.b_wave_right, 0, 3)
-
-        self.b_hello = QPushButton("Hello", self)
+        self.b_hello = QPushButton("", self)
+        self.b_hello.setFixedSize(100,100)
+        self.b_hello.setStyleSheet("background-image:url('../public/hello.png'); margin:0;")
         gridLayout.addWidget(self.b_hello, 1, 1)
 
-        self.b_shoot_right = QPushButton("Shoot right", self)
-        gridLayout.addWidget(self.b_shoot_right, 1, 2)
+        self.b_wave_left = QPushButton("", self)
+        self.b_wave_left.setFixedSize(100,100)
+        self.b_wave_left.setStyleSheet("background-image:url('../public/wave_left.png'); margin:0;")
+        gridLayout.addWidget(self.b_wave_left, 2, 0)
 
-        self.b_shoot_left = QPushButton("Shoot left", self)
-        gridLayout.addWidget(self.b_shoot_left, 1, 3)
+        self.b_wave_right = QPushButton("", self)
+        self.b_wave_right.setFixedSize(100,100)
+        self.b_wave_right.setStyleSheet("background-image:url('../public/wave_right.png'); margin:0;")
+        gridLayout.addWidget(self.b_wave_right, 2, 1)
 
-        self.b_calibrate = QPushButton("Calibrate", self)
-        gridLayout.addWidget(self.b_calibrate, 2, 1)
+        self.b_shoot_left = QPushButton("", self)
+        self.b_shoot_left.setFixedSize(100,100)
+        self.b_shoot_left.setStyleSheet("background-image:url('../public/kick_left.png'); margin:0;")
+        gridLayout.addWidget(self.b_shoot_left, 3, 0)
+
+        self.b_shoot_right = QPushButton("", self)
+        self.b_shoot_right.setFixedSize(100,100)
+        self.b_shoot_right.setStyleSheet("background-image:url('../public/kick_right.png'); margin:0;")
+        gridLayout.addWidget(self.b_shoot_right, 3, 1)
 
 
-        self.b_labyrinthe = QPushButton("Labyrinthe", self)
-        gridLayout.addWidget(self.b_labyrinthe, 2, 2)
+        self.b_labyrinthe = QPushButton("", self)
+        self.b_labyrinthe.setFixedSize(100,100)
+        self.b_labyrinthe.setStyleSheet("background-image:url('../public/labyrinthe.png'); margin:0;")
+        gridLayout.addWidget(self.b_labyrinthe, 4, 0)
 
         # Connect signals to slots
         self.b_stand_straight.clicked.connect(self.on_b_stand_straight)
@@ -116,11 +131,10 @@ class ActionView(QWidget):
         self.b_hello.clicked.connect(self.on_b_hello)
         self.b_shoot_right.clicked.connect(self.on_b_shoot_right)
         self.b_shoot_left.clicked.connect(self.on_b_shoot_left)
-        self.b_calibrate.clicked.connect(self.on_b_calibrate)
         self.b_labyrinthe.clicked.connect(self.on_b_labyrinthe)
 
-        self.hLayout.addWidget(gridLayoutWidgetArrow)
-        self.hLayout.addWidget(gridLayoutWidget)
+        self.vLayout.addWidget(gridLayoutWidgetArrow)
+        self.vLayout.addWidget(gridLayoutWidget)
 
     def showEvent(self, event):
         super().showEvent(event)
@@ -196,13 +210,8 @@ class ActionView(QWidget):
 
     def on_b_shoot_left(self):
         self.action_controller.on_b_shoot_left()
-    
-    def on_b_calibrate(self):
-        calibrate_window = ColorCalibrationView()
-        calibrate_window.setModal(True)
-        calibrate_window.show()
 
     def on_b_labyrinthe(self):
-        calibrate_window = LabyrintheView()
-        calibrate_window.setModal(True)
-        calibrate_window.show()
+        labyrinthe_window = LabyrintheView()
+        labyrinthe_window.setModal(True)
+        labyrinthe_window.show()

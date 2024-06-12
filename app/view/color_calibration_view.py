@@ -4,14 +4,13 @@ from PyQt6.QtGui import QIcon
 from app.controller.color_calibration_controller import ColorCalibrationController
 
 
-
 class ColorCalibrationView(QtWidgets.QDialog):
     color_calibration_controller = ColorCalibrationController()
 
-    def __init__(self, parent=None):
+    def __init__(self, nb_marty, parent=None):
         super(ColorCalibrationView, self).__init__(parent)
-        self.setWindowTitle("Calibration des couleurs")
-        self.setGeometry(0, 0, 400, 300)
+        self.setWindowTitle("Calibration des couleurs pour marty "+ str(nb_marty))
+        self.setGeometry(0, 0, 200, 100)
 
         self.hLayout = QHBoxLayout(self)
 
@@ -55,13 +54,7 @@ class ColorCalibrationView(QtWidgets.QDialog):
         self.b_yellow.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         grid_layout_caliber.addWidget(self.b_yellow, 2, 1)
 
-        self.b_black.clicked.connect(lambda _: self.on_b_color_click("black"))
-        self.b_dark_blue.clicked.connect(lambda _: self.on_b_color_click("dark_blue"))
-        self.b_green.clicked.connect(lambda _: self.on_b_color_click("green"))
-        self.b_light_blue.clicked.connect(lambda _: self.on_b_color_click("light_blue"))
-        self.b_pink.clicked.connect(lambda _: self.on_b_color_click("pink"))
-        self.b_red.clicked.connect(lambda _: self.on_b_color_click("red"))
-        self.b_yellow.clicked.connect(lambda _: self.on_b_color_click("yellow"))
+
 
 
     def on_b_color_click(self, color):
