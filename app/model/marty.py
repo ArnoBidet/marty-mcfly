@@ -32,12 +32,12 @@ class Marty():
 
 	def go_forw_left(self, nbMarty=0):
 		for i in range(4):
-			self.marties[nbMarty].walk(1, 'auto', 16, 1, 1000)
+			self.marties[nbMarty].walk(1, 'auto', 15, 1, 1000)
 		self.stand_straight()
 
 	def go_forward_right(self, nbMarty=0):
 		for i in range(4):
-			self.marties[nbMarty].walk(1, 'auto', -16, 1, 1000)
+			self.marties[nbMarty].walk(1, 'auto', -15, 1, 1000)
 		self.stand_straight()
 
 	def stand_straight(self, nbMarty=0):
