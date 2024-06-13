@@ -11,8 +11,8 @@ class ConnectionView(QtWidgets.QDialog ):
         super(ConnectionView, self).__init__(parent)
         self.mainWindow = mainWindow
         
-        self.setWindowTitle("Dialog")
-        self.setGeometry(0, 0, 400, 317)
+        self.setWindowTitle("Connexion à Marty")
+        self.setGeometry(0, 0, 200, 100)
 
         # Create the main layout
         main_layout = QVBoxLayout(self)
@@ -23,7 +23,7 @@ class ConnectionView(QtWidgets.QDialog ):
         main_layout.addWidget(self.textConnexion)
 
         # Add the IP input line edit
-        self.IPInput = QLineEdit("192.168.0.0", self)
+        self.IPInput = QLineEdit("192.168.140.77", self)
         self.IPInput.setMaxLength(15)
         self.IPInput.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         main_layout.addWidget(self.IPInput)
@@ -47,7 +47,6 @@ class ConnectionView(QtWidgets.QDialog ):
 
         if(success == "success"):
             action_view = ActionView(self.mainWindow)
-            self.mainWindow.resize(1000, 800)
             self.mainWindow.hLayout.addWidget(action_view)
 
         if (success == "failed"):
