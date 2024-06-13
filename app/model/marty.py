@@ -9,8 +9,19 @@ class Marty():
 	marties_ip = [None,None]
 	marties_connected = [None,None]
 	marties_status = [None,None]
-	labyrinth = [[[0,0,0],[0,0,0],[0,0,0]],[[0,0,0],[0,0,0],[0,0,0]]]
+	labyrinth = [[[0,0,0],
+							 [0,0,0],
+							 [0,0,0]],
+							 [[0,0,0],
+				 			 [0,0,0],
+				 			 [0,0,0]]]
+	labyrinth_result = [[0,0,0],
+						[0,0,0],
+						[0,0,0]]
 	colors = [{"black":0, "red":0, "green":0, "dark_blue":0, "light_blue":0, "yellow":0, "pink":0},{"black":0, "red":0, "green":0, "dark_blue":0, "light_blue":0, "yellow":0, "pink":0}]
+
+	
+
 	def __new__(cls, *args, **kwargs):
 		if not cls._instance:
 			cls._instance = super(Marty, cls).__new__(cls, *args, **kwargs)
@@ -149,6 +160,26 @@ class Marty():
 		self.stand_straight_forced(nbMarty)
 		self.readColor(2, 2, nbMarty)
 
+		print(self.labyrinth)
+	
+	def associate_actions(self):
+		self.associated_actions = {
+		"black": self.go_forw,
+		"red": self.go_back,
+		"green": self.turn_left,
+		"dark_blue": self.turn_right,
+		"light_blue": self.go_forw_left,
+		"yellow": self.go_forward_right,
+		"pink": self.stand_straight
+	}
+	
+	def merge_labyrinths(self):
+		for i in range(3):
+			for j in range(3):
+				if self.labyrinth[0][i][j] == 0:
+					self.labyrinth_result[i][j] = self.labyrinth[1][i][j]
+				else :
+					self.labyrinth_result[i][j] = self.labyrinth[0][i][j]
 		print(self.labyrinth)
 
 
