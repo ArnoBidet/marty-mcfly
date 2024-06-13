@@ -10,7 +10,7 @@ class Marty():
 	marties_connected = [None,None]
 	marties_status = [None,None]
 	labyrinth = [[[0,0,0],[0,0,0],[0,0,0]],[[0,0,0],[0,0,0],[0,0,0]]]
-	colors = {"black":0, "red":0, "green":0, "dark_blue":0, "light_blue":0, "yellow":0, "pink":0}
+	colors = [{"black":0, "red":0, "green":0, "dark_blue":0, "light_blue":0, "yellow":0, "pink":0},{"black":0, "red":0, "green":0, "dark_blue":0, "light_blue":0, "yellow":0, "pink":0}]
 	def __new__(cls, *args, **kwargs):
 		if not cls._instance:
 			cls._instance = super(Marty, cls).__new__(cls, *args, **kwargs)
@@ -97,10 +97,9 @@ class Marty():
 		mean = 0
 		for i in range(500):
 			mean = mean + int(self.marties[0].get_color_sensor_hex('left'), 16)
-		self.colors[color] = mean / 500
+		self.colors[nbMarty][color] = mean / 500
 
 	def read_labyrinth(self, nbMarty=0):
-		print(self.colors)
 		self.readColor(0, 0, nbMarty)
 
 		for n in range(5):
@@ -160,9 +159,9 @@ class Marty():
 			mean += color_sensor
 		color_sensor = mean / 500
 
-		for color in self.colors:
-			print(color + " : " + str(color_sensor - self.colors[color]))
-			if abs(color_sensor - self.colors[color]) < 300000:
+		for color in self.colors[nbMarty]:
+			print(color + " : " + str(color_sensor - self.colors[nbMarty][color]))
+			if abs(color_sensor - self.colors[nbMarty][color]) < 300000:
 				print(color)
 				self.labyrinth[nbMarty][i][j] = color
 		print("__________________")
