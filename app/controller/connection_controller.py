@@ -5,7 +5,7 @@ class ConnectionController():
 		self.marty = Marty()
 
 	def connect(self,ip, nb_marty = 0):
-		success = self.marty.connect_marty(ip,0)
+		success = self.marty.connect_marty(ip,nb_marty)
 		return success
 
 	def disconnect(self,nb_Marty = 0):
