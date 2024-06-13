@@ -164,13 +164,13 @@ class Marty():
 	
 	def associate_actions(self):
 		self.associated_actions = {
-		"black": self.go_forw,
-		"red": self.go_back,
-		"green": self.turn_left,
-		"dark_blue": self.turn_right,
-		"light_blue": self.go_forw_left,
-		"yellow": self.go_forward_right,
-		"pink": self.stand_straight
+		"black": [[0,0],self.go_forw],
+		"red": [[0,0],self.go_back],
+		"green": [[0,0],self.turn_left],
+		"dark_blue": [[0,0],self.turn_right],
+		"light_blue": [[0,0],self.go_forw_left],
+		"yellow": [[0,0],self.go_forward_right],
+		"pink": [[0,0],self.stand_straight]
 	}
 	
 	def merge_labyrinths(self):
