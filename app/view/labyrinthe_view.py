@@ -11,6 +11,8 @@ class LabyrintheView(QtWidgets.QDialog):
     labyrinthe_controller = LabyrintheController()
     connection_controller = ConnectionController()
 
+    button_size = 100
+
     def __init__(self, parent=None):
         super(LabyrintheView, self).__init__(parent)
         self.setWindowTitle("Calibration des couleurs")
@@ -26,9 +28,14 @@ class LabyrintheView(QtWidgets.QDialog):
         self.l_marty_0.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         grid_layout_labyrinthe.addWidget(self.l_marty_0, 0, 0)
 
-        self.b_calibrate_marty_0 = QPushButton("Calibrer", self)
+        self.b_calibrate_marty_0 = QPushButton("", self)
+        self.b_calibrate_marty_0.setStyleSheet("background-image:url('../public/calibrate.png'); margin:0;")
+        self.b_calibrate_marty_0.setFixedSize(self.button_size,self.button_size)
         grid_layout_labyrinthe.addWidget(self.b_calibrate_marty_0, 4, 0)
-        self.b_scan_marty_0 = QPushButton("Scan", self)
+
+        self.b_scan_marty_0 = QPushButton("", self)
+        self.b_scan_marty_0.setStyleSheet("background-image:url('../public/scan.png'); margin:0;")
+        self.b_scan_marty_0.setFixedSize(self.button_size,self.button_size)
         grid_layout_labyrinthe.addWidget(self.b_scan_marty_0, 5, 0)
 
         self.l_marty_1 = QLabel("Marty 2", self)
@@ -49,10 +56,14 @@ class LabyrintheView(QtWidgets.QDialog):
         self.b_connect_marty_1 = QPushButton("Connecter", self)
         grid_layout_labyrinthe.addWidget(self.b_connect_marty_1, 3, 1)
 
-        self.b_calibrate_marty_1 = QPushButton("Calibrer", self)
+        self.b_calibrate_marty_1 = QPushButton("", self)
+        self.b_calibrate_marty_1.setStyleSheet("background-image:url('../public/calibrate.png'); margin:0;")
+        self.b_calibrate_marty_1.setFixedSize(self.button_size,self.button_size)
         grid_layout_labyrinthe.addWidget(self.b_calibrate_marty_1, 4, 1)
 
-        self.b_scan_marty_1 = QPushButton("Scan", self)
+        self.b_scan_marty_1 = QPushButton("", self)
+        self.b_scan_marty_1.setStyleSheet("background-image:url('../public/scan.png'); margin:0;")
+        self.b_scan_marty_1.setFixedSize(self.button_size,self.button_size)
         grid_layout_labyrinthe.addWidget(self.b_scan_marty_1, 5, 1)
 
         self.b_resolve = QPushButton("Résoudre", self)
@@ -64,6 +75,9 @@ class LabyrintheView(QtWidgets.QDialog):
         self.b_scan_marty_1.clicked.connect(lambda _: self.b_scan(1))
         self.b_resolve.clicked.connect(lambda _: self.b_resolve())
         self.b_connect_marty_1.clicked.connect(lambda _:self.b_connect())
+
+
+        self.hLayout.addWidget(grid_layout_widget_labyrinthe)
 
     def b_calibrate(self, nb_marty):
         color_calibration_view = ColorCalibrationView(nb_marty)
