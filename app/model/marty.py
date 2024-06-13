@@ -9,7 +9,7 @@ class Marty():
 	marties_ip = [None,None]
 	marties_connected = [None,None]
 	marties_status = [None,None]
-	labyrinth = np.zeros((3,3))
+	labyrinth = [[[0,0,0],[0,0,0],[0,0,0]],[[0,0,0],[0,0,0],[0,0,0]]]
 	colors = {"black":0, "red":0, "green":0, "dark_blue":0, "light_blue":0, "yellow":0, "pink":0}
 	def __new__(cls, *args, **kwargs):
 		if not cls._instance:
@@ -24,7 +24,10 @@ class Marty():
 			print("No marty connected")
 
 	def go_back(self, nbMarty=0):
-		self.marties[nbMarty].walk(1,'auto',0,-37, 1700)
+		self.marties[nbMarty].walk(1,'auto',0,-35, 1700)
+
+	def go_back_slight(self, nbMarty=0):
+		self.marties[nbMarty].walk(1,'auto',0,-34, 1700)
 
 	def turn_left(self, nbMarty=0):
 		self.marties[nbMarty].sidestep("left")
@@ -45,6 +48,10 @@ class Marty():
 	def stand_straight(self, nbMarty=0):
 		if (self.marties[nbMarty].get_joint_position('left knee') or self.marties[nbMarty].get_joint_position('right knee')):
 			self.marties[nbMarty].walk(1, 'auto', 0, 8, 1700)
+		self.marties[nbMarty].stand_straight(750)
+
+	def stand_straight_forced(self, nbMarty=0):
+		self.marties[nbMarty].walk(1, 'auto', 0, 8, 1700)
 		self.marties[nbMarty].stand_straight(750)
 
 	def dance(self, nbMarty=0):
@@ -88,27 +95,73 @@ class Marty():
 
 	def color_calibration(self, color:str, nbMarty=0):
 		mean = 0
-		for i in range(15):
+		for i in range(500):
 			mean = mean + int(self.marties[0].get_color_sensor_hex('left'), 16)
-		self.colors[color] = mean / 15
+		self.colors[color] = mean / 500
 
 	def read_labyrinth(self, nbMarty=0):
-		for i in range(3):
+		print(self.colors)
+		self.readColor(0, 0, nbMarty)
 
-			for j in range(3):
-				self.labyrinth[i][j] = int(self.marties[nbMarty].get_color_sensor_hex('left'), 16)
-				if i % 2 == 0:
-					for n in range(3):
-						self.go_forw()
-						sleep(1)
-				elif i % 2 == 1:
-					for n in range(3):
-						self.go_back()
-						sleep(1)
-			self.stand_straight()
-			print(i)
-			if i < 2:
-				self.marties[nbMarty].sidestep('left', 6)
-				sleep(1)
+		for n in range(5):
+			self.go_forw()
+			sleep(3)
+		self.stand_straight_forced()
+		self.readColor(0, 1, nbMarty)
+
+		for n in range(5):
+			self.go_forw()
+			sleep(3)
+		self.stand_straight_forced()
+		self.readColor(0, 2, nbMarty)
+
+
+		self.marties[nbMarty].sidestep('left', 7)
+		self.stand_straight_forced()
+		self.readColor(1, 2, nbMarty)
+
+		for n in range(6):
+			self.go_back_slight()
+			sleep(3)
+		self.stand_straight_forced()
+		self.readColor(1, 1, nbMarty)
+
+		for n in range(6):
+			self.go_back_slight()
+			sleep(3)
+		self.stand_straight_forced()
+		self.readColor(1, 0, nbMarty)
+
+		self.marties[nbMarty].sidestep('left', 7)
+		self.stand_straight_forced()
+		self.readColor(2, 0, nbMarty)
+
+		for n in range(5):
+			self.go_forw()
+			sleep(3)
+		self.stand_straight_forced()
+		self.readColor(2, 1, nbMarty)
+
+		for n in range(5):
+			self.go_forw()
+			sleep(3)
+		self.stand_straight_forced()
+		self.readColor(2, 2, nbMarty)
+
 		print(self.labyrinth)
+
+
+	def readColor(self,i,j, nbMarty=0):
+		mean = 0
+		for k in range(500):
+			color_sensor = int(self.marties[nbMarty].get_color_sensor_hex('left'), 16)
+			mean += color_sensor
+		color_sensor = mean / 500
+
+		for color in self.colors:
+			print(color + " : " + str(color_sensor - self.colors[color]))
+			if abs(color_sensor - self.colors[color]) < 300000:
+				print(color)
+				self.labyrinth[nbMarty][i][j] = color
+		print("__________________")
 
