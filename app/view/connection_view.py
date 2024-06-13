@@ -43,17 +43,17 @@ class ConnectionView(QtWidgets.QDialog ):
 
 
     def on_ok(self):
-        #success = self.connection_controller.connect(self.IPInput.text())
+        success = self.connection_controller.connect(self.IPInput.text())
 
-        # if(success == "success"):
-        action_view = ActionView(self.mainWindow)
-        self.mainWindow.hLayout.addWidget(action_view)
+        if(success == "success"):
+            action_view = ActionView(self.mainWindow)
+            self.mainWindow.hLayout.addWidget(action_view)
 
-        # if (success == "failed"):
-        #     connectionView = ConnectionView(self.mainWindow)
-        #     connectionView.textConnexion.setText("Erreur lors de la connexion vers : " + self.IPInput.text())
-        #     connectionView.IPInput.setText(self.IPInput.text())
-        #     self.mainWindow.hLayout.addWidget(connectionView)
+        if (success == "failed"):
+            connectionView = ConnectionView(self.mainWindow)
+            connectionView.textConnexion.setText("Erreur lors de la connexion vers : " + self.IPInput.text())
+            connectionView.IPInput.setText(self.IPInput.text())
+            self.mainWindow.hLayout.addWidget(connectionView)
 
 
     def on_close(self):
