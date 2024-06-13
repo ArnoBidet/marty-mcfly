@@ -181,6 +181,19 @@ class Marty():
 				else :
 					self.labyrinth_result[i][j] = self.labyrinth[0][i][j]
 		print(self.labyrinth)
+	
+	def execute_labyrinth(self):
+		self.associate_actions()
+		x = 0
+		y = 0
+		color  = self.labyrinth_result[x][y]
+		while color != "black":
+			self.associated_actions[color][1]()
+			x = self.associated_actions[color][0][0]
+			y = self.associated_actions[color][0][1]
+			color = self.labyrinth_result[x][y]
+			sleep(3)
+		self.celebrate()
 
 
 	def readColor(self,i,j, nbMarty=0):
