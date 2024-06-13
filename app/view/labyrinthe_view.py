@@ -48,7 +48,7 @@ class LabyrintheView(QtWidgets.QDialog):
         self.l_marty_0_status.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         grid_layout_labyrinthe.addWidget(self.l_marty_0_status, 1, 2, QtCore.Qt.AlignmentFlag.AlignCenter)
         # Add the IP input line edit
-        self.IPInput = QLineEdit("192.168.252.182", self)
+        self.IPInput = QLineEdit("192.168.0.116", self)
         font = self.IPInput.font()  # lineedit current font
         font.setPointSize(10)  # change it's size
         self.IPInput.setFont(font)
@@ -90,13 +90,13 @@ class LabyrintheView(QtWidgets.QDialog):
         color_calibration_view.show()
 
     def b_scan(self, nb_marty):
-        pass
+        self.labyrinthe_controller.read_labyrinth(nb_marty)
 
     def b_connect(self):
-        success = self.connection_controller.connect(self.IPInput.text())
+        success = self.connection_controller.connect(self.IPInput.text(),1)
 
         if (success == "success"):
-            self.l_marty_0_status.setText("connecté", 1)
+            self.l_marty_0_status.setText("connecté")
 
         if (success == "failed"):
             self.l_marty_0_status.setText("échec")

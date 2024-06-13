@@ -27,7 +27,7 @@ class Marty():
 		self.marties[nbMarty].walk(1,'auto',0,-35, 1700)
 
 	def go_back_slight(self, nbMarty=0):
-		self.marties[nbMarty].walk(1,'auto',0,-34, 1700)
+		self.marties[nbMarty].walk(1,'auto',0,-33, 1700)
 
 	def turn_left(self, nbMarty=0):
 		self.marties[nbMarty].sidestep("left")
@@ -104,48 +104,50 @@ class Marty():
 		self.readColor(0, 0, nbMarty)
 
 		for n in range(5):
-			self.go_forw()
+			self.go_forw(nbMarty)
 			sleep(3)
-		self.stand_straight_forced()
+		self.stand_straight_forced(nbMarty)
 		self.readColor(0, 1, nbMarty)
 
 		for n in range(5):
-			self.go_forw()
+			self.go_forw(nbMarty)
 			sleep(3)
-		self.stand_straight_forced()
+		self.stand_straight_forced(nbMarty)
 		self.readColor(0, 2, nbMarty)
 
 
-		self.marties[nbMarty].sidestep('left', 7)
-		self.stand_straight_forced()
+		self.marties[nbMarty].sidestep('left', 6)
+		sleep(10)
+		self.stand_straight_forced(nbMarty)
 		self.readColor(1, 2, nbMarty)
 
 		for n in range(6):
-			self.go_back_slight()
+			self.go_back_slight(nbMarty)
 			sleep(3)
-		self.stand_straight_forced()
+		self.stand_straight_forced(nbMarty)
 		self.readColor(1, 1, nbMarty)
 
 		for n in range(6):
-			self.go_back_slight()
+			self.go_back_slight(nbMarty)
 			sleep(3)
-		self.stand_straight_forced()
+		self.stand_straight_forced(nbMarty)
 		self.readColor(1, 0, nbMarty)
 
-		self.marties[nbMarty].sidestep('left', 7)
-		self.stand_straight_forced()
+		self.marties[nbMarty].sidestep('left', 6)
+		sleep(10)
+		self.stand_straight_forced(nbMarty)
 		self.readColor(2, 0, nbMarty)
 
 		for n in range(5):
-			self.go_forw()
+			self.go_forw(nbMarty)
 			sleep(3)
-		self.stand_straight_forced()
+		self.stand_straight_forced(nbMarty)
 		self.readColor(2, 1, nbMarty)
 
 		for n in range(5):
-			self.go_forw()
+			self.go_forw(nbMarty)
 			sleep(3)
-		self.stand_straight_forced()
+		self.stand_straight_forced(nbMarty)
 		self.readColor(2, 2, nbMarty)
 
 		print(self.labyrinth)

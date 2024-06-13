@@ -23,7 +23,7 @@ class ConnectionView(QtWidgets.QDialog ):
         main_layout.addWidget(self.textConnexion)
 
         # Add the IP input line edit
-        self.IPInput = QLineEdit("192.168.140.77", self)
+        self.IPInput = QLineEdit("192.168.0.104", self)
         self.IPInput.setMaxLength(15)
         self.IPInput.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         main_layout.addWidget(self.IPInput)
