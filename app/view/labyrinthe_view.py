@@ -19,7 +19,7 @@ class LabyrintheView(QtWidgets.QDialog):
         self.hLayout = QHBoxLayout(self)
 
         grid_layout_widget_labyrinthe = QWidget(self)
-        grid_layout_widget_labyrinthe.setGeometry(30, 20, 325, 251)
+        grid_layout_widget_labyrinthe.setGeometry(0, 0, 200, 100)
         grid_layout_labyrinthe = QGridLayout(grid_layout_widget_labyrinthe)
 
         self.l_marty_0 = QLabel("Marty 1", self)
@@ -46,15 +46,8 @@ class LabyrintheView(QtWidgets.QDialog):
         grid_layout_labyrinthe.addWidget(self.IPInput, 2, 1)
 
         # Add the button box
-        self.buttonBox = QDialogButtonBox()
-        self.buttonBox.addButton("Connecter", QDialogButtonBox.ButtonRole.YesRole)
-        self.buttonBox.addButton("Déconnecter", QDialogButtonBox.ButtonRole.NoRole)
-        self.buttonBox.setOrientation(QtCore.Qt.Orientation.Horizontal)
-        self.buttonBox.setCenterButtons(True)
-        self.buttonBox.childAt(0).setDisabled(True)
-        self.buttonBox.accepted.connect(self.b_connect())
-        self.buttonBox.rejected.connect(self.b_disconnect())
-        grid_layout_labyrinthe.addWidget(self.buttonBox, 3, 1)
+        self.b_connect_marty_1 = QPushButton("Connecter", self)
+        grid_layout_labyrinthe.addWidget(self.b_connect_marty_1, 3, 1)
 
         self.b_calibrate_marty_1 = QPushButton("Calibrer", self)
         grid_layout_labyrinthe.addWidget(self.b_calibrate_marty_1, 4, 1)
@@ -70,6 +63,7 @@ class LabyrintheView(QtWidgets.QDialog):
         self.b_scan_marty_0.clicked.connect(lambda _: self.b_scan(0))
         self.b_scan_marty_1.clicked.connect(lambda _: self.b_scan(1))
         self.b_resolve.clicked.connect(lambda _: self.b_resolve())
+        self.b_connect_marty_1.clicked.connect(lambda _:self.b_connect())
 
     def b_calibrate(self, nb_marty):
         color_calibration_view = ColorCalibrationView(nb_marty)
@@ -80,13 +74,9 @@ class LabyrintheView(QtWidgets.QDialog):
         pass
 
     def b_connect(self):
-        self.buttonBox.childAt(0).setDisabled(True)
-        self.buttonBox.childAt(1).setDisabled(False)
         pass
 
     def b_disconnect(self):
-        self.buttonBox.childAt(0).setDisabled(False)
-        self.buttonBox.childAt(1).setDisabled(True)
         pass
 
     def on_ok(self):

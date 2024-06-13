@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy,QVBoxLayout
+from PyQt6.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QHBoxLayout
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon
 from app.controller.action_controller import ActionController
@@ -8,13 +8,15 @@ from app.view.labyrinthe_view import LabyrintheView
 class ActionView(QWidget):
     action_controller = ActionController()
 
+    button_size = 100
+
     def __init__(self, mainWindow, parent=None):
         super(ActionView, self).__init__(parent)
         self.mainWindow = mainWindow
         self.setWindowTitle("Panneau de contrôle")
         self.setGeometry(0, 0, 200, 100)
 
-        self.vLayout = QVBoxLayout(self)
+        self.hLayout = QHBoxLayout(self)
 
         # Create the grid layout
         gridLayoutWidgetArrow = QWidget(self)
@@ -24,33 +26,33 @@ class ActionView(QWidget):
 
         # Add buttons to the layout with icons
         self.b_left = QPushButton("", self)
-        self.b_left.setFixedSize(100,100)
+        self.b_left.setFixedSize(self.button_size,self.button_size)
         self.b_left.setStyleSheet("background-image:url('../public/left-arrow.png'); margin:0;")
         gridLayoutArrow.addWidget(self.b_left, 1, 0)
 
         self.b_right = QPushButton("", self)
-        self.b_right.setFixedSize(100,100)
+        self.b_right.setFixedSize(self.button_size,self.button_size)
         self.b_right.setStyleSheet("background-image:url('../public/right-arrow.png'); margin:0;")
         gridLayoutArrow.addWidget(self.b_right, 1, 2)
 
         self.b_forw = QPushButton("", self)
-        self.b_forw.setFixedSize(100,100)
+        self.b_forw.setFixedSize(self.button_size,self.button_size)
         self.b_forw.setStyleSheet("background-image:url('../public/forw-arrow.png'); margin:0;")
         gridLayoutArrow.addWidget(self.b_forw, 0, 1)
         self.b_forw.setFocus()
 
         self.b_forw_right = QPushButton("", self)
-        self.b_forw_right.setFixedSize(100,100)
+        self.b_forw_right.setFixedSize(self.button_size,self.button_size)
         self.b_forw_right.setStyleSheet("background-image:url('../public/up-right-arrow.png'); margin:0;")
         gridLayoutArrow.addWidget(self.b_forw_right, 0, 2)
 
         self.b_back = QPushButton("", self)
-        self.b_back.setFixedSize(100,100)
+        self.b_back.setFixedSize(self.button_size,self.button_size)
         self.b_back.setStyleSheet("background-image:url('../public/back-arrow.png'); margin:0;")
         gridLayoutArrow.addWidget(self.b_back, 2, 1)
 
         self.b_forw_left = QPushButton("", self)
-        self.b_forw_left.setFixedSize(100,100)
+        self.b_forw_left.setFixedSize(self.button_size,self.button_size)
         self.b_forw_left.setStyleSheet("background-image:url('../public/up-left-arrow.png'); margin:0;")
         gridLayoutArrow.addWidget(self.b_forw_left, 0, 0)
 
@@ -77,50 +79,49 @@ class ActionView(QWidget):
 
         # Add buttons to the layout
         self.b_stand_straight = QPushButton("", self)
-        self.b_stand_straight.setFixedSize(100,100)
+        self.b_stand_straight.setFixedSize(self.button_size,self.button_size)
         self.b_stand_straight.setStyleSheet("background-image:url('../public/stand_straight.png'); margin:0;")
         gridLayout.addWidget(self.b_stand_straight, 0, 0)
 
-        self.b_dance = QPushButton("", self)
-        self.b_dance.setFixedSize(100,100)
-        self.b_dance.setStyleSheet("background-image:url('../public/dance.png'); margin:0;")
-        gridLayout.addWidget(self.b_dance, 0, 1)
-
-        self.b_celebrate = QPushButton("", self)
-        self.b_celebrate.setFixedSize(100,100)
-        self.b_celebrate.setStyleSheet("background-image:url('../public/celebrate.png'); margin:0;")
-        gridLayout.addWidget(self.b_celebrate, 1, 0)
-
-        self.b_hello = QPushButton("", self)
-        self.b_hello.setFixedSize(100,100)
-        self.b_hello.setStyleSheet("background-image:url('../public/hello.png'); margin:0;")
-        gridLayout.addWidget(self.b_hello, 1, 1)
-
         self.b_wave_left = QPushButton("", self)
-        self.b_wave_left.setFixedSize(100,100)
+        self.b_wave_left.setFixedSize(self.button_size,self.button_size)
         self.b_wave_left.setStyleSheet("background-image:url('../public/wave_left.png'); margin:0;")
-        gridLayout.addWidget(self.b_wave_left, 2, 0)
+        gridLayout.addWidget(self.b_wave_left, 0, 1)
 
         self.b_wave_right = QPushButton("", self)
-        self.b_wave_right.setFixedSize(100,100)
+        self.b_wave_right.setFixedSize(self.button_size,self.button_size)
         self.b_wave_right.setStyleSheet("background-image:url('../public/wave_right.png'); margin:0;")
-        gridLayout.addWidget(self.b_wave_right, 2, 1)
+        gridLayout.addWidget(self.b_wave_right, 0, 2)
+
+        self.b_dance = QPushButton("", self)
+        self.b_dance.setFixedSize(self.button_size,self.button_size)
+        self.b_dance.setStyleSheet("background-image:url('../public/dance.png'); margin:0;")
+        gridLayout.addWidget(self.b_dance, 1, 0)
 
         self.b_shoot_left = QPushButton("", self)
-        self.b_shoot_left.setFixedSize(100,100)
+        self.b_shoot_left.setFixedSize(self.button_size,self.button_size)
         self.b_shoot_left.setStyleSheet("background-image:url('../public/kick_left.png'); margin:0;")
-        gridLayout.addWidget(self.b_shoot_left, 3, 0)
+        gridLayout.addWidget(self.b_shoot_left, 1, 1)
 
         self.b_shoot_right = QPushButton("", self)
-        self.b_shoot_right.setFixedSize(100,100)
+        self.b_shoot_right.setFixedSize(self.button_size,self.button_size)
         self.b_shoot_right.setStyleSheet("background-image:url('../public/kick_right.png'); margin:0;")
-        gridLayout.addWidget(self.b_shoot_right, 3, 1)
+        gridLayout.addWidget(self.b_shoot_right, 1, 2)
 
+        self.b_celebrate = QPushButton("", self)
+        self.b_celebrate.setFixedSize(self.button_size,self.button_size)
+        self.b_celebrate.setStyleSheet("background-image:url('../public/celebrate.png'); margin:0;")
+        gridLayout.addWidget(self.b_celebrate, 2, 0)
+
+        self.b_hello = QPushButton("", self)
+        self.b_hello.setFixedSize(self.button_size,self.button_size)
+        self.b_hello.setStyleSheet("background-image:url('../public/hello.png'); margin:0;")
+        gridLayout.addWidget(self.b_hello, 2, 1)
 
         self.b_labyrinthe = QPushButton("", self)
-        self.b_labyrinthe.setFixedSize(100,100)
+        self.b_labyrinthe.setFixedSize(self.button_size,self.button_size)
         self.b_labyrinthe.setStyleSheet("background-image:url('../public/labyrinthe.png'); margin:0;")
-        gridLayout.addWidget(self.b_labyrinthe, 4, 0)
+        gridLayout.addWidget(self.b_labyrinthe, 2, 2)
 
         # Connect signals to slots
         self.b_stand_straight.clicked.connect(self.on_b_stand_straight)
@@ -133,8 +134,8 @@ class ActionView(QWidget):
         self.b_shoot_left.clicked.connect(self.on_b_shoot_left)
         self.b_labyrinthe.clicked.connect(self.on_b_labyrinthe)
 
-        self.vLayout.addWidget(gridLayoutWidgetArrow)
-        self.vLayout.addWidget(gridLayoutWidget)
+        self.hLayout.addWidget(gridLayoutWidgetArrow)
+        self.hLayout.addWidget(gridLayoutWidget)
 
     def showEvent(self, event):
         super().showEvent(event)
