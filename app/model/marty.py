@@ -164,19 +164,18 @@ class Marty():
 	
 	def associate_actions(self):
 		self.associated_actions = {
-		"black": [[0,0],self.go_forw],
-		"red": [[0,0],self.go_back],
-		"green": [[0,0],self.turn_left],
-		"dark_blue": [[0,0],self.turn_right],
-		"light_blue": [[0,0],self.go_forw_left],
-		"yellow": [[0,0],self.go_forward_right],
-		"pink": [[0,0],self.stand_straight]
+		"red": [[0,0],self.celebrate],
+		"green": [[0,-1],self.go_forw],
+		"dark_blue": [[1,0],self.turn_right],
+		"light_blue": [[0,0],self.stand_straight],
+		"yellow": [[0,1],self.go_back],
+		"pink": [[-1,0],self.turn_left]
 	}
 	
 	def merge_labyrinths(self):
 		for i in range(3):
 			for j in range(3):
-				if self.labyrinth[0][i][j] == 0:
+				if self.labyrinth[0][i][j] == "black":
 					self.labyrinth_result[i][j] = self.labyrinth[1][i][j]
 				else :
 					self.labyrinth_result[i][j] = self.labyrinth[0][i][j]
@@ -187,7 +186,7 @@ class Marty():
 		x = 0
 		y = 0
 		color  = self.labyrinth_result[x][y]
-		while color != "black":
+		while color != "red":
 			self.associated_actions[color][1]()
 			x = self.associated_actions[color][0][0]
 			y = self.associated_actions[color][0][1]
