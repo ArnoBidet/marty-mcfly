@@ -8,6 +8,10 @@ class ConnectionController():
 		success = self.marty.connect_marty(ip,0)
 		return success
 
+	def disconnect(self,nb_Marty = 0):
+		success = self.marty.disconnect_marty(nb_Marty)
+		return success
+
 	def cancel(self):
 		##ferme la fenetre / reset le champs ip
 		pass
