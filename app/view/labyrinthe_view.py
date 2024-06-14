@@ -78,7 +78,7 @@ class LabyrintheView(QtWidgets.QDialog):
         self.b_calibrate_marty_1.clicked.connect(lambda _: self.b_calibrate(1))
         self.b_scan_marty_0.clicked.connect(lambda _: self.b_scan(0))
         self.b_scan_marty_1.clicked.connect(lambda _: self.b_scan(1))
-        self.b_resolve.clicked.connect(lambda _: self.b_resolve())
+        self.b_resolve.clicked.connect(lambda _: self.b_execute_labyrinth())
         self.b_connect_marty_1.clicked.connect(lambda _:self.b_connect())
 
 
@@ -112,3 +112,6 @@ class LabyrintheView(QtWidgets.QDialog):
 
     def on_close(self):
         self.close()
+
+    def b_execute_labyrinth(self):
+        self.labyrinthe_controller.execute_labyrinth()

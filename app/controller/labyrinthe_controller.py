@@ -11,3 +11,6 @@ class LabyrintheController():
     def resolve(self,nb_marty):
         print("resolve")
         self.marty.labyrinthe(nb_marty)
+
+    def execute_labyrinth(self):
+        self.marty.execute_labyrinth()

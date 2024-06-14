@@ -161,15 +161,34 @@ class Marty():
 		self.readColor(2, 2, nbMarty)
 
 		print(self.labyrinth)
+
+	def lab_go_forw(self, nbMarty=0):
+		for n in range(5):
+			self.go_forw(nbMarty)
+			sleep(3)
+		self.stand_straight_forced(nbMarty)
+	def lab_turn_right(self, nbMarty=0):
+		self.marties[nbMarty].sidestep('right', 6)
+		sleep(10)
+		self.stand_straight_forced(nbMarty)
+	def lab_go_back(self, nbMarty=0):
+		for n in range(6):
+			self.go_back_slight(nbMarty)
+			sleep(3)
+		self.stand_straight_forced(nbMarty)
+	def lab_turn_left(self, nbMarty=0):
+		self.marties[nbMarty].sidestep('left', 6)
+		sleep(10)
+		self.stand_straight_forced(nbMarty)
 	
 	def associate_actions(self):
 		self.associated_actions = {
 		"red": [[0,0],self.celebrate],
-		"green": [[0,-1],self.go_forw],
-		"dark_blue": [[1,0],self.turn_right],
+		"green": [[0,-1],self.lab_go_forw],
+		"dark_blue": [[1,0],self.lab_turn_right],
 		"light_blue": [[0,0],self.stand_straight],
-		"yellow": [[0,1],self.go_back],
-		"pink": [[-1,0],self.turn_left]
+		"yellow": [[0,1],self.lab_go_back],
+		"pink": [[-1,0],self.lab_turn_left]
 	}
 	
 	def merge_labyrinths(self):
@@ -183,11 +202,13 @@ class Marty():
 	
 	def execute_labyrinth(self):
 		self.associate_actions()
+		self.merge_labyrinths()
 		x = 0
 		y = 0
 		color  = self.labyrinth_result[x][y]
 		while color != "red":
-			self.associated_actions[color][1]()
+			self.associated_actions[color][1](0)
+			self.associated_actions[color][1](1)
 			x = self.associated_actions[color][0][0]
 			y = self.associated_actions[color][0][1]
 			color = self.labyrinth_result[x][y]
